@@ -17,20 +17,24 @@ public class TestForm {
 
     @Test
     void successfulTest() {
-        String name = "Hanna";
+        String name = "Volha";
+        String email = "volha@gmail.com";
+        String currentAddress = "Brest";
+        String permanentAddress = "Brest";
+
         open("/text-box");
 
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
 
         $("[id=userName]").setValue(name);
-        $("[id=userEmail]").setValue("hanna@newtest.com");
-        $("[id=currentAddress]").setValue("London Baker street 21");
-        $("[id=permanentAddress]").setValue("London Baker street 25");
+        $("[id=userEmail]").setValue(email);
+        $("[id=currentAddress]").setValue(currentAddress);
+        $("[id=permanentAddress]").setValue(permanentAddress);
         $("[id=submit]").click();
 
-        $("[id=output]").shouldHave(text(name), text("hanna@newtest.com"),
-                text("London Baker street 21"), text("London Baker street 25"));
+        $("[id=output]").shouldHave(text(name), text(email),
+                text("Brest"), text("Brest"));
 
         System.out.println("HAPPY TESTING");
     }
